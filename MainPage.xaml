@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Ui_Design___Personalization.MainPage"
+    Title="App del Clima"
+    BackgroundColor="#F0F8FF">
+
+    <ContentPage.Resources>
+        
+        <Style x:Key="HeaderTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#2E8B57"/>
+            
+            <Setter Property="Margin" Value="0,10,0,5"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+
+     
+        <Style x:Key="TemperatureTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="72"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            
+            <Setter Property="TextColor" Value="#4682B4"/>
+            
+            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+
+        
+        <Style x:Key="DetailTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="#696969"/>
+            
+            <Setter Property="Margin" Value="0,2"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        </Style>
+
+       
+        <Style x:Key="UpdateButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#87CEEB"/>
+            
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+
+    
+    <Grid Margin="20">
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            
+            <RowDefinition Height="*"/>
+           
+            <RowDefinition Height="Auto"/>
+            
+            <RowDefinition Height="Auto"/>
+            
+            <RowDefinition Height="Auto"/>
+            
+        </Grid.RowDefinitions>
+
+        
+        <Label Grid.Row="0" Text="Ciudad Ficticia" Style="{StaticResource HeaderTextStyle}"/>
+
+       
+        <StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="Center" Margin="0,10,0,0">
+            <Label Text="☀️" FontSize="80" HorizontalTextAlignment="Center" Margin="0,0,0,10"/>
+            
+            <Label Text="{Binding Temperature}" Style="{StaticResource TemperatureTextStyle}"/>
+            <Label Text="°C" Style="{StaticResource DetailTextStyle}" HorizontalTextAlignment="Center" FontSize="36"/>
+        </StackLayout>
+
+        
+        <Label Grid.Row="2" Text="{Binding WeatherDescription}" Style="{StaticResource DetailTextStyle}" FontSize="24"/>
+
+        
+        <StackLayout Grid.Row="3" Orientation="Vertical" Margin="0,20,0,0">
+            <Label Text="{Binding Humidity}" Style="{StaticResource DetailTextStyle}"/>
+            <Label Text="{Binding WindSpeed}" Style="{StaticResource DetailTextStyle}"/>
+        </StackLayout>
+
+       
+        <Button Grid.Row="4" Text="Actualizar Datos" Style="{StaticResource UpdateButton}"
+                VerticalOptions="End" Margin="0,20,0,0"
+                Clicked="UpdateButton_Clicked"/>
+    </Grid>
+    </ContentPage>
